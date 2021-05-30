@@ -1,0 +1,161 @@
+:root {
+  --backgroundImg: url("../img/fliped.gif") center center no-repeat;
+  --PreTopVal: 0px;
+  --TopVal: 0px;
+  --PreLeftVal: 0px;
+  --LeftVal: 0px;
+  --moveBirdDuration: 1500ms;
+  --Preangle: 0deg;
+  --angle: 0deg;
+  --randTop: 400px;
+  --randLeft: 500px;
+  --killPosition: 0px;
+  --ground: 0px;
+  --fallingTime: 500ms;
+}
+
+@keyframes bird-fall {
+  from {
+    /* top: var(--PreTopVal); */
+    top: var(--killPosition);
+  }
+  to {
+    top: var(--ground);
+  }
+}
+.bird-fall {
+  animation-name: bird-fall;
+  animation-timing-function: linear;
+  /* animation-timing-function: ease-in; */
+  animation-duration: 1000ms;
+  /* animation-duration: var(--fallingTime); */
+  animation-fill-mode: forwards;
+}
+@keyframes move-bird {
+  from {
+    top: var(--PreTopVal);
+    left: var(--PreLeftVal);
+  }
+  to {
+    top: var(--TopVal);
+    left: var(--LeftVal);
+  }
+}
+.move-bird {
+  animation-name: move-bird;
+  animation-timing-function: linear;
+  /* animation-duration: 800ms; */
+  animation-duration: var(--moveBirdDuration);
+}
+
+.angle-change {
+  transform: rotate(var(--angle));
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-jc-sb {
+  justify-content: space-between;
+}
+
+.flex-jc-sa {
+  justify-content: space-around;
+}
+
+.flex-jc-c {
+  justify-content: center;
+}
+
+.flex-jc-fe {
+  justify-content: flex-end;
+}
+
+.flex-ai-c {
+  align-items: center;
+}
+
+.flex-ai-fs {
+  align-items: flex-start;
+}
+
+.flex-di-co {
+  flex-direction: column;
+}
+
+.flex-di-rr {
+  flex-direction: row-reverse;
+}
+
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#board {
+  background: url("../img/background.jpg") center center no-repeat;
+  background-size: cover;
+  width: 90vw;
+  height: 100vh;
+  cursor: crosshair;
+}
+
+.bird-img {
+  position: absolute;
+
+  top: var(--randTop);
+  left: var(--randLeft);
+  /* top: var(--PreTopVal);
+  left: var(--PreLeftVal); */
+  height: 50px;
+  width: 50px;
+  background: var(--backgroundImg);
+  background-size: cover;
+  /* border: 2px solid yellow; */
+  /* transform: rotate(var(--angle)); */
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+
+#ScoreBoard {
+  background: yellow;
+  width: 10vw;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+#ScoreBoard #Score {
+  margin-left: 1vw;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+#ScoreBoard #HighestScore {
+  color: indigo;
+  margin-left: 1vw;
+  margin-bottom: 10px;
+}
+
+#ScoreBoard #Chance {
+  color: maroon;
+  margin-left: 1vw;
+  margin-bottom: 10px;
+}
